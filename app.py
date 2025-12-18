@@ -377,4 +377,4 @@ def generate_ai_response(message, idea_id):
                 f"What would you like to know more about?")
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5005)
