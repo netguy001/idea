@@ -1,4 +1,4 @@
-name: Deploy to EC2
+name: Deploy Flask App to EC2
 
 on:
   push:
@@ -10,8 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # 1️⃣ Pull code from GitHub
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
+      # 2️⃣ Setup SSH
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
@@ -19,9 +22,18 @@ jobs:
           chmod 600 ~/.ssh/key.pem
           ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Copy files to EC2
+      # 3️⃣ Ensure app directory exists on EC2
+      - name: Create app directory on EC2
         run: |
-          rsync -avz \
+          ssh -i ~/.ssh/key.pem \
+            ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} \
+            "mkdir -p /home/ec2-user/idea-heaven"
+
+      # 4️⃣ Sync files to EC2
+      - name: Deploy code to EC2
+        run: |
+          rsync -avz --delete \
             --exclude '.git' \
+            --exclude 'venv' \
             -e "ssh -i ~/.ssh/key.pem" \
-            ./ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/ec2-user/idea-heaven
+            ./ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/ec2-user/idea-heaven/
