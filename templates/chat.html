@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant - CS Project Ideas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-left">
+                <a href="/explore" class="back-link">← Back to Explore</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <span class="user-email">{{ user_email }}</span>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="chat-page">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="project-info">
+                    <span class="project-icon">{{ idea.icon }}</span>
+                    <div>
+                        <h2>{{ idea.summary }}</h2>
+                        <p class="project-field">{{ idea.field }} • {{ idea.complexity }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be dynamically inserted here -->
+            </div>
+            
+            <div class="chat-input-container">
+                <form id="chatForm" onsubmit="sendMessage(event)">
+                    <input 
+                        type="text" 
+                        id="messageInput" 
+                        placeholder="Ask about folder structure, architecture, modules, or interview questions..." 
+                        required
+                        autocomplete="off"
+                    >
+                    <button type="submit" class="send-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 10l18-8-8 18-2-8-8-2z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Store idea information
+        const currentIdea = {
+            id: {{ idea.id }},
+            icon: "{{ idea.icon }}",
+            summary: "{{ idea.summary }}",
+            problem: "{{ idea.problem }}",
+            solution: "{{ idea.solution }}",
+            tech_stack: "{{ idea.tech_stack }}",
+            field: "{{ idea.field }}",
+            complexity: "{{ idea.complexity }}"
+        };
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

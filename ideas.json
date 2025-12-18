@@ -1,0 +1,100 @@
+{
+  "ideas": [
+    {
+      "id": 1,
+      "icon": "🤖",
+      "summary": "AI-powered study companion for personalized learning",
+      "problem": "Students struggle to find study materials tailored to their learning pace and style.",
+      "solution": "Build an AI assistant that adapts study content based on student performance and preferences.",
+      "tech_stack": "Python, Flask, TensorFlow, React, MongoDB",
+      "field": "Artificial Intelligence",
+      "complexity": "Hard",
+      "likes": 0,
+      "liked_by": []
+    },
+    {
+      "id": 2,
+      "icon": "🏥",
+      "summary": "Telemedicine platform for remote patient monitoring",
+      "problem": "Rural areas lack access to specialized healthcare services.",
+      "solution": "Create a web platform connecting patients with doctors via video calls and real-time health monitoring.",
+      "tech_stack": "Node.js, WebRTC, PostgreSQL, Vue.js",
+      "field": "Healthcare",
+      "complexity": "Medium",
+      "likes": 0,
+      "liked_by": []
+    },
+    {
+      "id": 3,
+      "icon": "🌐",
+      "summary": "Blockchain-based supply chain transparency system",
+      "problem": "Supply chains lack transparency leading to counterfeit products and fraud.",
+      "solution": "Implement a blockchain network to track products from manufacturing to delivery.",
+      "tech_stack": "Solidity, Ethereum, Web3.js, Express, React",
+      "field": "Blockchain",
+      "complexity": "Hard",
+      "likes": 0,
+      "liked_by": []
+    },
+    {
+      "id": 4,
+      "icon": "📱",
+      "summary": "Campus event management and notification system",
+      "problem": "Students miss important campus events due to poor communication channels.",
+      "solution": "Develop a mobile-first web app for event creation, discovery, and push notifications.",
+      "tech_stack": "React Native, Firebase, Node.js, MongoDB",
+      "field": "Web Development",
+      "complexity": "Easy",
+      "likes": 0,
+      "liked_by": []
+    },
+    {
+      "id": 5,
+      "icon": "🔐",
+      "summary": "Password manager with biometric authentication",
+      "problem": "Users struggle to remember multiple complex passwords across platforms.",
+      "solution": "Build a secure password vault with encryption and biometric login support.",
+      "tech_stack": "Python, Flask, SQLite, AES Encryption, JavaScript",
+      "field": "Cybersecurity",
+      "complexity": "Medium",
+      "likes": 0,
+      "liked_by": []
+    },
+    {
+      "id": 6,
+      "icon": "📊",
+      "summary": "Real-time stock market prediction using machine learning",
+      "problem": "Investors need data-driven insights to make informed trading decisions.",
+      "solution": "Create a system that analyzes historical data and predicts stock trends using ML models.",
+      "tech_stack": "Python, scikit-learn, Pandas, Flask, Chart.js",
+      "field": "Data Science",
+      "complexity": "Hard",
+      "likes": 0,
+      "liked_by": []
+    },
+    {
+      "id": 7,
+      "icon": "🎮",
+      "summary": "Multiplayer online quiz game with leaderboards",
+      "problem": "Students need engaging ways to test their knowledge while competing with peers.",
+      "solution": "Develop a real-time quiz game with categories, difficulty levels, and global rankings.",
+      "tech_stack": "Node.js, Socket.io, MongoDB, Express, HTML5",
+      "field": "Game Development",
+      "complexity": "Medium",
+      "likes": 0,
+      "liked_by": []
+    },
+    {
+      "id": 8,
+      "icon": "♿",
+      "summary": "Text-to-speech accessibility tool for visually impaired users",
+      "problem": "Many websites are not accessible to users with visual impairments.",
+      "solution": "Create a browser extension that converts web content to natural-sounding speech.",
+      "tech_stack": "JavaScript, Web Speech API, Chrome Extension API",
+      "field": "Accessibility",
+      "complexity": "Easy",
+      "likes": 0,
+      "liked_by": []
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Projects - CS Project Ideas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-left">
+                <span class="logo-icon">💡</span>
+                <h1>CS Project Ideas</h1>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <span class="user-email">{{ user_email }}</span>
+                <a href="/logout" class="logout-btn">Logout</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="explore-page">
+        <div class="page-header">
+            <h2>Explore Project Ideas</h2>
+            <p>Discover innovative projects to enhance your portfolio</p>
+        </div>
+        
+        <div class="filters-section">
+            <div class="filter-group">
+                <label for="fieldFilter">Field:</label>
+                <select id="fieldFilter" onchange="applyFilters()">
+                    <option value="all">All Fields</option>
+                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Blockchain">Blockchain</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Cybersecurity">Cybersecurity</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Game Development">Game Development</option>
+                    <option value="Accessibility">Accessibility</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="complexityFilter">Complexity:</label>
+                <select id="complexityFilter" onchange="applyFilters()">
+                    <option value="all">All Levels</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="projects-grid" id="projectsGrid">
+            <p style="text-align: center; color: #666; padding: 40px;">Loading projects...</p>
+        </div>
+    </main>
+    
+    <script>
+        // Store current user email - MUST be set before main.js loads
+        window.currentUserEmail = "{{ user_email }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
