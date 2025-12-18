@@ -10,30 +10,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Pull code from GitHub
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup SSH
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/key.pem
           chmod 600 ~/.ssh/key.pem
-          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
-      # 3️⃣ Ensure app directory exists on EC2
-      - name: Create app directory on EC2
+          # Force add EC2 host key (no prompts, no trust issues)
+          ssh-keyscan -t rsa ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Ensure app directory exists on EC2
         run: |
-          ssh -i ~/.ssh/key.pem \
-            ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} \
-            "mkdir -p /home/ec2-user/idea-heaven"
+          ssh -o StrictHostKeyChecking=no \
+              -i ~/.ssh/key.pem \
+              ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} \
+              "mkdir -p /home/ec2-user/idea-heaven"
 
-      # 4️⃣ Sync files to EC2
       - name: Deploy code to EC2
         run: |
           rsync -avz --delete \
             --exclude '.git' \
             --exclude 'venv' \
-            -e "ssh -i ~/.ssh/key.pem" \
+            -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/key.pem" \
             ./ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/ec2-user/idea-heaven/
